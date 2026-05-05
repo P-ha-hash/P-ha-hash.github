@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NINA TRAVELS & TOURS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary: #0f766e;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0f766e;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .blog-img {
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-img {
+            transform: scale(1.08);
+        }
+
+        .why-us {
+           padding: 100px 5%;
+           background: white;
+        }
+
+        .section-title {
+           text-align: center;
+           font-size: 2.8rem;
+           margin-bottom: 3rem;
+           color: var(--dark);
+           font-weight: 700;
+        }
+
+        .features {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+           gap: 2rem;
+           max-width: 1200px;
+           margin: 0 auto;
+        }
+
+        .feature {
+           text-align: center;
+           padding: 2rem;
+        }
+
+       .feature-icon {
+           font-size: 3.5rem;
+           margin-bottom: 1rem;
+        }
+
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-800">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-9 h-9 bg-teal-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">N</div>
+                    <div>
+                        <span class="heading-font text-2xl font-semibold tracking-tight">Nina Travels & Tours</span>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#Home" class="nav-link text-zinc-700 hover:text-teal-700">Home</a>
+                    <a href="#Blog" class="nav-link text-zinc-700 hover:text-teal-700">Blog</a>
+                    <a href="#Destinations" class="nav-link text-zinc-700 hover:text-teal-700">Destinations</a>
+                    <a href="#About Us" class="nav-link text-zinc-700 hover:text-teal-700">About Us</a>
+                    <a href="#Contact" class="nav-link text-zinc-700 hover:text-teal-700">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <button onclick="toggleSearch()" 
+                            class="w-10 h-10 flex items-center justify-center text-zinc-600 hover:text-teal-700 transition-colors">
+                        <i class="fa-solid fa-magnifying-glass text-xl"></i>
+                    </button>
+                    <button onclick="bookNow()"
+                            class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-2xl text-sm font-semibold flex items-center gap-x-2 transition-all">
+                        <i class="fa-solid fa-plane"></i>
+                         <span>Plan Trip</span>
+                    </button>
+                    
+                    <!-- Mobile menu -->
+                    <button class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="Home" class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-x-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-3xl mb-6">
+                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium tracking-widest">NEW: Nina Travels & Tours 2026</span>
+            </div>
+            
+            <h1 class="heading-font text-6xl md:text-7xl font-bold leading-tight mb-6">
+                Wander Without<br>Worries
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 max-w-xl mx-auto mb-10">
+                Expertly crafted journeys to the world's most breathtaking destinations.<br>Create unforgotteable memories.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="exploreDestinations()" 
+                        class="bg-white text-teal-800 hover:bg-amber-50 px-10 py-4 rounded-3xl font-semibold text-lg flex items-center justify-center gap-x-3 transition-all">
+                    Explore Destinations
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="mt-16 flex justify-center gap-x-8 text-sm">
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-check text-emerald-400"></i>
+                    <span>100% Customizable</span>
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-check text-emerald-400"></i>
+                    <span>Local Guides</span>
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-check text-emerald-400"></i>
+                    <span>24/7 Support</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FEATURED BLOG POSTS -->
+    <section id="Blog" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <span class="uppercase tracking-widest text-teal-600 text-sm font-semibold">Travel Stories</span>
+                <h2 class="heading-font text-5xl font-semibold mt-2">Latest from the Road</h2>
+            </div>
+            <a href="#" class="hidden md:flex items-center gap-x-2 text-teal-600 hover:text-teal-700 font-medium">
+                View all posts 
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Blog Card 1 -->
+            <div class="blog-card group bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://picsum.photos/id/1016/800/600" 
+                         alt="Santorini" 
+                         class="blog-img w-full h-full object-cover">
+                </div>
+                <div class="p-7">
+                    <div class="flex items-center gap-x-3 text-xs mb-4">
+                        <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-2xl">Greece</span>
+                        <span class="text-zinc-500">• 8 min read</span>
+                    </div>
+                    <h3 class="heading-font text-2xl font-semibold leading-tight mb-3 group-hover:text-teal-700 transition-colors">
+                        Why Santorini Should Be Your Next Summer Escape
+                    </h3>
+                    <p class="text-zinc-600 line-clamp-3 mb-6">
+                        From hidden beaches to sunset views that stop you in your tracks, here's everything you need to know before visiting the jewel of the Aegean.
+                    </p>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-x-3">
+                            <img src="https://picsum.photos/id/64/64/64" class="w-8 h-8 rounded-full object-cover" alt="">
+                            <div>
+                                <div class="font-medium text-xs">Maria Lopez</div>
+                                <div class="text-zinc-500 text-[10px]">Travel Writer</div>
+                            </div>
+                        </div>
+                        <span class="text-teal-600 text-xs font-medium">Read →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="blog-card group bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://picsum.photos/id/133/800/600" 
+                         alt="Marrakech" 
+                         class="blog-img w-full h-full object-cover">
+                </div>
+                <div class="p-7">
+                    <div class="flex items-center gap-x-3 text-xs mb-4">
+                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-2xl">Morocco</span>
+                        <span class="text-zinc-500">• 12 min read</span>
+                    </div>
+                    <h3 class="heading-font text-2xl font-semibold leading-tight mb-3 group-hover:text-teal-700 transition-colors">
+                        5 Days in Marrakech: A First-Timer's Ultimate Guide
+                    </h3>
+                    <p class="text-zinc-600 line-clamp-3 mb-6">
+                        Riads, souks, and incredible food — discover the magic of Morocco's most vibrant city with our detailed itinerary.
+                    </p>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-x-3">
+                            <img src="https://picsum.photos/id/201/64/64" class="w-8 h-8 rounded-full object-cover" alt="">
+                            <div>
+                                <div class="font-medium text-xs">Ahmed Hassan</div>
+                                <div class="text-zinc-500 text-[10px]">Destination Expert</div>
+                            </div>
+                        </div>
+                        <span class="text-teal-600 text-xs font-medium">Read →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="blog-card group bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://picsum.photos/id/201/800/600" 
+                         alt="Patagonia" 
+                         class="blog-img w-full h-full object-cover">
+                </div>
+                <div class="p-7">
+                    <div class="flex items-center gap-x-3 text-xs mb-4">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-2xl">Argentina</span>
+                        <span class="text-zinc-500">• 15 min read</span>
+                    </div>
+                    <h3 class="heading-font text-2xl font-semibold leading-tight mb-3 group-hover:text-teal-700 transition-colors">
+                        Hiking Patagonia: What No One Tells You
+                    </h3>
+                    <p class="text-zinc-600 line-clamp-3 mb-6">
+                        Tips, packing lists, and real talk about one of the most beautiful places on Earth from someone who just returned.
+                    </p>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-x-3">
+                            <img src="https://picsum.photos/id/238/64/64" class="w-8 h-8 rounded-full object-cover" alt="">
+                            <div>
+                                <div class="font-medium text-xs">Elena Petrova</div>
+                                <div class="text-zinc-500 text-[10px]">Adventure Guide</div>
+                            </div>
+                        </div>
+                        <span class="text-teal-600 text-xs font-medium">Read →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINATIONS -->
+    <section id="Destinations" class="bg-white py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-teal-600 font-semibold">Handpicked For You</span>
+                <h2 class="heading-font text-5xl font-semibold mt-3">Popular Destinations</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] cursor-pointer">
+                    <img src="https://picsum.photos/id/1015/600/800" class="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500" alt="Bali">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <div class="text-sm tracking-widest">INDONESIA</div>
+                        <div class="heading-font text-3xl font-semibold">Bali</div>
+                    </div>
+                </div>
+                
+                <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] cursor-pointer">
+                    <img src="https://picsum.photos/id/133/600/800" class="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500" alt="Kyoto">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <div class="text-sm tracking-widest">JAPAN</div>
+                        <div class="heading-font text-3xl font-semibold">Kyoto</div>
+                    </div>
+                </div>
+                
+                <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] cursor-pointer">
+                    <img src="paris-pics.jpg" class="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500" alt="Marrakech">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <div class="text-sm tracking-widest">FRANCE</div>
+                        <div class="heading-font text-3xl font-semibold">Paris</div>
+                    </div>
+                </div>
+                
+                <div class="group relative rounded-3xl overflow-hidden aspect-[4/3] cursor-pointer">
+                    <img src="dubai-pics.jpg" class="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500" alt="Machu Picchu">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <div class="text-sm tracking-widest">DUBIA</div>
+                        <div class="heading-font text-3xl font-semibold">Abu Dhabi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="About Us" class="max-w-7xl mx-auto px-6 py-20 bg-zinc-100">
+        <h2 class="section-title">Why Choose Nina Travels & Tours?</h2>
+    
+     <div class="features">
+       <div class="feature">
+         <div class="feature-icon">✈️</div>
+         <h3>Expert Guides</h3>
+         <p>Local experts who know every hidden gem</p>
+       </div>
+       <div class="feature">
+         <div class="feature-icon">🏆</div>
+         <h3>Best Price Guarantee</h3>
+         <p>We beat any comparable price</p>
+       </div>
+       <div class="feature">
+         <div class="feature-icon">🛡️</div>
+         <h3>Travel Protection</h3>
+         <p>Comprehensive insurance included</p>
+       </div>
+       <div class="feature">
+         <div class="feature-icon">🌍</div>
+         <h3>Sustainable Travel</h3>
+         <p>Eco-friendly adventures that give back</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="bg-teal-800 text-white py-20">
+        <div class="max-w-xl mx-auto text-center px-6">
+            <h2 class="heading-font text-4xl font-semibold mb-4">Stay Inspired</h2>
+            <p class="mb-8">Get monthly travel stories, secret destinations, and exclusive deals straight to your inbox.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input type="email" id="email" 
+                       placeholder="your@email.com"
+                       class="flex-1 px-6 py-4 rounded-3xl bg-white/10 border border-white/30 focus:outline-none focus:border-white placeholder:text-white/60">
+                <button onclick="subscribe()" 
+                        class="bg-white text-teal-800 font-semibold px-10 py-4 rounded-3xl hover:bg-amber-50 transition-colors">
+                    Subscribe
+                </button>
+            </div>
+            <p class="text-xs text-white/60 mt-6">We respect your inbox. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="Contact" class="bg-zinc-900 text-zinc-400">
+        <div class="max-w-7xl mx-auto px-6 pt-20 pb-12">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-y-20">
+                <div>
+                    <div class="flex items-center gap-x-3 text-white mb-6">
+                        <div class="w-9 h-9 bg-teal-600 rounded-2xl flex items-center justify-center text-3xl">N
+                        </div>
+                        <span class="heading-font text-3xl font-semibold">Nina Travels & Tours</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        Crafting unforgettable journeys since 2020. Your adventure starts here.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#Home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#Blogs" class="hover:text-white transition-colors">Blogs</a></li>
+                        <li><a href="#Destinations" class="hover:text-white transition-colors">Destinations</a></li>
+                        <li><a href="#About Us" class="hover:text-white transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+                  <ul class="space-y-3 text-sm">
+                     <li><a href="https://wa.me/+2348168838128"> WhatsApp</a></li>
+                     <li><a href="https://www.instagram.com/nina_travelss/"> Instagram</a></li>
+                     <li><a href="https://www.facebook.com/A.zee4/"> Facebook</a></li>
+                     <li><a href="https://www.tiktok.com/@nina.travels.and?_r=1&_t=ZS-964sNaREyNJ"> TikTok</a></li>
+                  </ul>     
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Get in Touch</h4>
+                    <div class="text-sm space-y-2">
+                        <p>Lagos, Nigeria</p>
+                        <p class="flex items-center gap-x-2">
+                            <i class="fa-solid fa-phone"></i> 
+                            +234 816 883 8128
+                        </p>
+                        <p class="flex items-center gap-x-2">
+                            <i class="fa-solid fa-phone"></i> 
+                            +234 904 820 6005
+                        </p>
+                        <p class="flex items-center gap-x-2">
+                            <i class="fa-solid fa-envelope"></i> 
+                            Ninatours2022@gmail.com
+                        </p>
+                    </div>
+                    
+                    <div class="flex gap-x-4 mt-8">
+                        <a href="https://www.instagram.com/nina_travelss/" class="hover:text-white"><i class="fa-brands fa-instagram text-2xl"></i></a>
+                        <a href="https://www.facebook.com/A.zee4/" class="hover:text-white"><i class="fa-brands fa-facebook text-2xl"></i></a>
+                        <a href="https://www.tiktok.com/@nina.travels.and?_r=1&_t=ZS-964sNaREyNJ" class="hover:text-white"><i class="fa-brands fa-tiktok text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-zinc-800 mt-16 pt-8 text-xs flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>© 2026 Nina Travels and Tours. All rights reserved.</p>
+                <div class="flex gap-x-6">
+                    <a href="#" class="hover:text-white">Privacy</a>
+                    <a href="#" class="hover:text-white">Terms</a>
+                    <a href="#" class="hover:text-white">Sustainability</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSearch() {
+            alert("Search functionality coming soon! ✨");
+        }
+        
+        function bookNow() {
+            // alert("🎉 Let's plan your next adventure!\n\nOur travel experts will contact you shortly.");
+            
+            const name = prompt("What's your full name?");
+            if (!name) return;
+            
+            const destination = prompt("Where would you like to go? (e.g. Bali, Paris, Dubai)");
+            
+            if (destination) {
+                alert(`🎉 Thank you ${name}!\n\nWe've received your request for a trip to **${destination}**.\n\nPlease kindly link on contact and drop a message on whatsapp,instagam or tiktok.`);
+            }
+        }
+        
+        function exploreDestinations() {
+            document.querySelector('section:nth-of-type(2)').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function readLatest() {
+            document.querySelector('section:first-of-type').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function subscribe() {
+            const email = document.getElementById('email').value;
+            if (email) {
+                alert("Thank you! You've been subscribed to our travel newsletter. 🌍");
+                document.getElementById('email').value = '';
+            } else {
+                alert("Please enter your email address.");
+            }
+        }
+        
+        // Tailwind script already included via CDN
+        console.log('%cVista Voyages Blog Ready! 🌎', 'color: #0f766e; font-size: 14px; font-family: monospace');
+    </script>
+</body>
+</html>
